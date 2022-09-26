@@ -1,6 +1,6 @@
-Team name:
+Team name: TALK
 
-Team members:
+Team members: Tu Nguyen, Logan Nommensen, Kyle Smigelski, Andrew Slayton
 
 # Introduction
 
