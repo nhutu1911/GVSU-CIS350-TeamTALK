@@ -1,13 +1,18 @@
 # Overview
-< Describee the purpose of this document in 1 paragraph of less … hint: it is your SRS >
+
+<Describe the purpose of this document in 1 paragraph of less … hint: it is your SRS>
 
 # Functional Requirements
-1. Name of feature 1 
-	1. FR
-	2. FR
-	3. so on 
 
-# Non-functional
-2. Name
-	1. NFR...
+1. <Name of Feature 1>
+    1. <Functional Requirement 1>
+    2. <Functional Requirement 2>
+    3. <And so on>
+
+# Non-Functional Requirements
+
+2. <Name of Feature 1>
+    1. <Non-Functional Requirement 1>
+    2. <Non-Functional Requirement 2>
+    3. <And so on>
 
