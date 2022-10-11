@@ -1,6 +1,6 @@
 # Overview
 
-<The purpose of our system requirement spec is to lay the ground rules for what we expect from our project. This is important because it gives a clear understanding of what our future goals are. This includes what our project will be able to do functionally and non-functionally through the lens of software development. This is an important part of project planning as it collectively gathers the ideas and goals of every member for the project and narrows them down to specific requirements that shall be completed.>
+The purpose of our system requirement spec is to lay the ground rules for what we expect from our project. This is important because it gives a clear understanding of what our future goals are. This includes what our project will be able to do functionally and non-functionally through the lens of software development. This is an important part of project planning as it collectively gathers the ideas and goals of every member for the project and narrows them down to specific requirements that shall be completed.
 
 # Functional Requirements
 
@@ -28,7 +28,11 @@
 
 # Non-Functional Requirements
 
+<<<<<<< HEAD
 6. Leaderboard 
+=======
+6. Leaderboard
+>>>>>>> 47ad478c18f6475bd9e903a0b7ed433008ce293b
     1. The leaderboard shall be visible to all users.
     2. Users shall not be able to edit the leaderboard.
 7. Login Form
