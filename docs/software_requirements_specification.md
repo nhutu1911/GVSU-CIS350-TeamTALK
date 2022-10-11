@@ -4,7 +4,7 @@
 
 # Functional Requirements
 
-1. <Leaderboard>
+1. Leaderboard
     1. <Comparable fitness data shall be shown on a leaderboard.>
     2. <The user shall see their data and other users’ data on the leaderboard.>
     3. <The user shall be able to look at other users records by clicking their name on the leaderboard.>
@@ -28,7 +28,7 @@
 
 # Non-Functional Requirements
 
-6. <Leaderboard>
+6. <Leaderboard> 
     1. <The leaderboard shall be visible to all users.>
     2. <Users shall not be able to edit the leaderboard.>
 7. <Login Form>
