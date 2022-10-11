@@ -28,11 +28,7 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 
 # Non-Functional Requirements
 
-<<<<<<< HEAD
-6. Leaderboard 
-=======
 6. Leaderboard
->>>>>>> 47ad478c18f6475bd9e903a0b7ed433008ce293b
     1. The leaderboard shall be visible to all users.
     2. Users shall not be able to edit the leaderboard.
 7. Login Form
