@@ -1,4 +1,4 @@
-##Daily Challenge System Use-Case Description 
+## Daily Challenge System Use-Case Description 
 
 Use Case: View Challenge
 
