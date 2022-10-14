@@ -14,4 +14,4 @@ def hello_world():
 @app.route('/user/')
 @app.route('/user/<name>')
 def user(name=None):
-    return render_template('src/flask/templates/user.html', name=name)
+    return render_template('user.html', name=name)
