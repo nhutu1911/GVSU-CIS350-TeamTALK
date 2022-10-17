@@ -14,3 +14,7 @@ def index():
 @app.route('/user/<name>')
 def user(name=None):
     return render_template('user.html', name=name)
+
+@app.route('/challenges/')
+def challenges():
+    return render_template('challenges.html')
