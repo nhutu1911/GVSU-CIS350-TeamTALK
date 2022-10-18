@@ -30,7 +30,7 @@ def challenges():
     return render_template('challenges.html')
 
 @app.route('/leaderboard/')
-def challenges():
+def leaderboard():
     return render_template('leaderboard.html')
 
 @app.route('/login/', methods=['GET', 'POST'])
