@@ -29,6 +29,10 @@ def user():
 def challenges():
     return render_template('challenges.html')
 
+@app.route('/leaderboard/')
+def challenges():
+    return render_template('leaderboard.html')
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
