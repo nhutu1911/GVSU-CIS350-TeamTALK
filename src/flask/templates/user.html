@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 {% extends "base.html" %}
-<head>
-    <meta charset="UTF-8">
-    <title>TALK Fitness Tracker</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
-</head>
-<body>
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
 <h1>Hello {{ session['username'] }}</h1>
 <p style="font-size: 20px;">You currently have <b>400</b> points.</p>
 <form method="post">
