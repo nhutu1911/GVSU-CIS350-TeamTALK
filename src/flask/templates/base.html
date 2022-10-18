@@ -15,11 +15,16 @@
             <div class="navbar-left">
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('challenges') }}">Challenges</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
             </div>
             <div class="navbar-right">
+                {% if session['username'] %}
+                <li><a href="{{ url_for('user') }}">Welcome, {{ session['username'] }}</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('user') }}">Register</a></li>
+                {% endif %}
             </div>
         </ul>
     </div>

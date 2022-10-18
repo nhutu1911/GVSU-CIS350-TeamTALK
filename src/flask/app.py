@@ -41,3 +41,8 @@ def login():
         session['username'] = request.form['username']
         return redirect(url_for('user'))
     return render_template('login.html')
+
+@app.route('/logout/')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
