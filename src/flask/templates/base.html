@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>TALK Fitness Tracker</title>
+</head>
 <body>
 <div class="header">
     <div class="header-left">
@@ -14,7 +18,7 @@
                 <li><a href="/leaderboard">Leaderboard</a></li>
             </div>
             <div class="navbar-right">
-                <li><a href="{{ url_for('user') }}">Login</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('user') }}">Register</a></li>
             </div>
         </ul>
