@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="{{ url_for('static', filename='base.css') }}" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>TALK Fitness Tracker</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-left">
+        <a class="logo" href="{{ url_for('index') }}">TALK Fitness</a>
+    </div>
+    <div class="header-right">
+        <ul class="links">
+            <div class="navbar-left">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if session['username'] %}
+                <li><a href="{{ url_for('user') }}">User</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('challenges') }}">Challenges</a></li>
+                <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
+            </div>
+            <div class="navbar-right">
+                {% if session['username'] %}
+                <li><a href="{{ url_for('user') }}">Welcome, {{ session['username'] }}</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('login') }}">Register</a></li>
+                {% endif %}
+            </div>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
