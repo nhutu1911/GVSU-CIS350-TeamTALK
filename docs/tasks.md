@@ -1,26 +1,53 @@
 # Project Tasks
-### Phase 1: Access the Need
-- Identify project idea 
-- Complete project proposal 
-- Create a skeleton for the project 
-- Determine skills, equipment, and materials needed
+## High-level tasks
+##### Name: Requirements
+- Description: Brainstorming project idea and requirements
+- Expected time: 2-3 days
+- Responsible: Tu, Andrew, Logan, Kyle 
 
-### Phase 2: Develop Web Applicaion Main Features
-- Set up a basic main page
-- Create a log in page 
-- Hook in API for data entry 
-- Create point system with incentives 
-- Set challange page - Display challenge 
-- Save data after completing challenge 
-- Update leaderboard 
+##### Name: Main Page
+- Description: Set up main page and menu
+- Expected time: 1 week
+- Responsible: Logan, Andrew
 
-### Phase 3: Evaluate Potential Risks 
-- Unable to implement API for data entry 
+##### Name: API
+- Description: Hook up API for data entry 
+- Expected time: 1 week 
+- Responsible: Kyle
 
-### Phase 4: Web Application Front-end
-- Establish a user-friendly webpage
-- Create more professional user interface
- 
-### Phase 5: Testing 
-- Establish unit test
-- Pass all the tests
+##### Name: Challenge Page
+- Description: Display challenge and complete challenge
+- Expected time: 1-2 weeks 
+- Responsible: Andrew, Tu, Kyle 
+
+##### Name: Update Leaderboard and Data
+- Description: Save user's data and update leaderboard
+- Expected time: 1-2 weeks
+- Responsible: Logan, Kyle 
+
+##### Name: Front-end
+- Description: Create professional interface
+- Expected time: 2 weeks
+- Responsible: Andrew, Tu
+
+##### Name: Testing 
+- Description: Write unit test and pass all tests
+- Expected time: 1-2 weeks
+- Responsible: Logan, Kyle, Andrew, Tu 
+
+### Completed Task:
+- Requirements 
+- Main Page 
+
+### In-progress Tasks:
+- API
+- Challenge Page
+- Update Leaderboard and Dat
+- Front-end 
+- Testing 
+
+
+
+
+
+
