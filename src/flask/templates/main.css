@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+nav {
+    position: relative;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 16px 24px;
+}
+
+nav h1 {
+    letter-spacing: 5px;
+    padding: 8px 16px;
+    padding-right: 11px;
+    border: 3px solid white;
+    transition:  0.3s;
+}
+
+nav h1:hover {
+    color: lightblue;
+}
+
+.menu {
+    display: none;
+    align-items: center;
+    /* equal spacing left and right */
+    margin: 0 -16px;
+}
+
+.menu a {
+    margin: 0 16px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: lightblue;
+}
+
+.hamburger {
+    appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.hamburger span {
+    background-color: black;
+    color: white;
+    font-size: 32px;
+    transition: 0.3s;
+}
+
+.hamburger span:hover {
+    color: lightblue;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 98;
+    padding-top: 96px; 
+
+    /* disappear the menu */
+    opacity: 0;
+    transform: translateY(-100%);
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.mobile-menu:hover {
+    color: lightblue;
+}
+
+.mobile-menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.mobile-menu a:hover {
+    color: lightblue;
+    background-color: white;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu, .hamburger {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+    }
+}
