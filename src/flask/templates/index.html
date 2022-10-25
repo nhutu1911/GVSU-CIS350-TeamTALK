@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends "base.html" %}
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALK Fitness Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+
+</head>
 <body>
-<p>A web application that will take user fitness data, either manually entered or entered through an existing fitness tracker’s API, and log it into a user account. Based on their input, we will create a leaderboard showing their username and their fitness score. Login authentication will hopefully use Google’s OAuth. The user will be able to record their information and see other users’ fitness goals and fitness history.</p>
-<p>On this website, users will be able to access daily challenges, which may be different exercises to help motivate them to keep active and add more fitness data and increase their score on the leaderboard. We believe the application will give users motivation with their fitness goals and it can become an inspiring community for everyone to accomplish goals they otherwise would potentially lack motivation for. These daily goals will also give users the ability to learn more about exercise if they are confused with what exercises to do, and they will learn about how the specific exercise on the daily challenge is beneficial to their health.</p>
+    <header>
+        <nav>
+            <h1>TALK FITNESS</h1>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">Challenges</a>
+                <a href="leaderboard.html">Leaderboard</a>
+                <a href="#">Login</a>
+                <a href="#">Register</a>
+            </div>
+
+            <button class="hamburger">
+                <span class="material-icons">menu</span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu">
+            <a href="#">Home</a>
+            <a href="#">Challenges</a>
+            <a href="#">Leaderboard</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+       
+
+    </header>
+    <script src="main.js"></script>
 </body>
-{% endblock %}
 </html>
