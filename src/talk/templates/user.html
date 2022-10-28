@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
+<h1>Hello {{ session['username'] }}</h1>
+<p style="font-size: 20px;">You currently have <b>400</b> points.</p>
+<form method="post">
+    <label for="exercise-type">Exercise type</label>
+    <select id="exercise-type" onChange="changedSelection()">
+        <option value="Running">Running</option>
+        <option value="Biking">Biking</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Weights">Weights</option>
+        <option value="Yoga">Yoga</option>
+    </select>
+    <div id="duration-div">
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration">
+    </div>
+    <div id="distance-div">
+        <label for="distance">Distance</label>
+        <input type="text" id="distance" name="distance">
+    </div>
+    <div id="reps-div" hidden>
+        <label for="reps">Reps</label>
+        <input type="text" id="reps" name="reps">
+    </div>
+    <div id="sets-div" hidden>
+        <label for="sets">Sets</label>
+        <input type="text" id="sets" name="sets">
+    </div>
+    <div id="weight-div" hidden>
+        <label for="weight">Weight</label>
+        <input type="text" id="weight" name="weight">
+    </div>
+    <div id="calories-div" hidden>
+        <label for="calories">Weight</label>
+        <input type="calories" id="calories" name="weight">
+    </div>
+
+    <input type="submit" value="Submit exercise">
+</form>
+
+</body>
+{% endblock %}
+</html>
