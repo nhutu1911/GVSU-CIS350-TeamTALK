@@ -5,6 +5,7 @@ from flask import session
 from flask import redirect
 from flask import url_for
 from flask import Blueprint
+from flask_login import current_user
 
 main = Blueprint('main', __name__)
 
@@ -14,9 +15,9 @@ def index():
 
 @main.route('/user/')
 def user():
-    if 'username' in session:
-        return render_template('user.html', name=session['username'])
-    return render_template('login.html')
+    if current_user:
+        return render_template('user.html', user=current_user)
+    return redirect(url_for('auth.login'))
 
 @main.route('/challenges/')
 def challenges():
