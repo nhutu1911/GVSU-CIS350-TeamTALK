@@ -4,8 +4,11 @@
     <p>View the Users table and change points or delete users.</p>
     <table>
         <tr>
+            <th>ID</th>
             <th>Username</th>
-            <th>Actions</th>
+            <th>Password Hash</th>
+            <th>Points</th>
+
         </tr>
         {% for user in users %}
         <tr>
