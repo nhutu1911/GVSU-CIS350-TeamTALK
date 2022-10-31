@@ -2,35 +2,33 @@
 <html lang="en">
 {% extends "base.html" %}
 {% block content %}
-  <h1>Please log in.</h1>
-    <form method="post">
-        {{ form.csrf_token }}
-
-        <fieldset class="username">
-            {{ form.username.label }}
-            {{ form.username(placeholder='username') }}
-            {% if form.username.errors %}
-                <ul class="errors">
-                    {% for error in form.username.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-      </fieldset>
-      <fieldset class="password">
+<h1>Please log in.</h1>
+<form method="post">
+    {{ form.csrf_token }}
+    <fieldset class="username">
+        {{ form.username.label }}
+        {{ form.username(placeholder='username') }}
+        {% if form.username.errors %}
+            <ul class="errors">
+                {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </fieldset>
+    <fieldset class="password">
         {{ form.password.label }}
         {{ form.password }}
         {% if form.password.errors %}
-          <ul class="errors">
-            {% for error in form.password.errors %}
-              <li>{{ error }}</li>{% endfor %}
-          </ul>
+            <ul class="errors">
+                {% for error in form.password.errors %}
+                <li>{{ error }}</li>{% endfor %}
+            </ul>
         {% endif %}
-      </fieldset>
-      <div class="submit-button">
+    </fieldset>
+    <div class="submit-button">
         {{ form.submit }}
-      </div>
-    </form>
+    </div>
+</form>
 {% endblock %}
-</body>
 </html>
