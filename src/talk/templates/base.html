@@ -14,14 +14,14 @@
         <ul class="links">
             <div class="navbar-left">
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                {% if current_user %}
+                {% if current_user['username'] %}
                 <li><a href="{{ url_for('main.user') }}">User</a></li>
                 {% endif %}
                 <li><a href="{{ url_for('main.challenges') }}">Challenges</a></li>
                 <li><a href="{{ url_for('main.leaderboard') }}">Leaderboard</a></li>
             </div>
             <div class="navbar-right">
-                {% if current_user %}
+                {% if current_user['username'] %}
                 <li><a href="{{ url_for('main.user') }}">Welcome, {{ current_user['username'] }}</a></li>
                 <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
