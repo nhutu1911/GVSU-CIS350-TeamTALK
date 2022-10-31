@@ -18,3 +18,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+    def set_points(self, points):
+        self.points = points
+

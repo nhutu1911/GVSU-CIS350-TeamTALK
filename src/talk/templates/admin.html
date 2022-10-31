@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Admin Console</h1>
+    <p>View the Users table and change points or delete users.</p>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>
+                <form action="{{ url_for('auth.set_points') }}" method="post">
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <input type="number" name="points" value="{{ user.points }}">
+                    <input type="submit" value="Set Points">
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('auth.delete_user') }}" method="post">
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <input type="submit" value="Delete User">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -65,3 +65,32 @@ def load_user(user_id):
 def unauthorized():
     #flash("You must be logged in to view that page.")
     return redirect(url_for("auth.login"))
+
+@auth.route('/admin/')
+@login_required
+def admin():
+    if current_user.username == 'admin':
+        users = User.query.all()
+        return render_template('admin.html', users=users)
+    return redirect(url_for('main.index'))
+
+@auth.route('/admin/delete/', methods=['POST'])
+@login_required
+def delete_user():
+    if current_user.username == 'admin':
+        user = User.query.get(request.form['id'])
+        db.session.delete(user)
+        db.session.commit()
+        return redirect(url_for('auth.admin'))
+    return redirect(url_for('main.index'))
+
+@auth.route('/admin/setpoints/', methods=['POST'])
+@login_required
+def set_points():
+    if current_user.username == 'admin':
+        print(request.form)
+        user = User.query.get(request.form['id'])
+        user.set_points(request.form['points'])
+        db.session.commit()
+        return redirect(url_for('auth.admin'))
+    return redirect(url_for('main.index'))
