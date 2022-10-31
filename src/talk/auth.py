@@ -1,7 +1,5 @@
-from flask import Flask
 from flask import render_template
 from flask import request
-from flask import session
 from flask import redirect
 from flask import url_for
 from flask import Blueprint
@@ -21,13 +19,8 @@ def login():
     # Validate login attempt
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            print('User found')
-            if user.check_password(form.password.data):
-                print('Password correct')
         if user and user.check_password(password=form.password.data):
             login_user(user)
-            next_page = request.args.get('next')
             return redirect(url_for('main.user'))
         # flash('Invalid username/password combination')
         return redirect(url_for('auth.login'))
@@ -63,7 +56,7 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    #flash("You must be logged in to view that page.")
+    # flash("You must be logged in to view that page.")
     return redirect(url_for("auth.login"))
 
 @auth.route('/admin/')
