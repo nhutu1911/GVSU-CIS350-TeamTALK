@@ -4,7 +4,7 @@
 {% block content %}
 <script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
 <h1>Hello {{ user['username'] }}</h1>
-<p style="font-size: 20px;">You currently have <b>0</b> points.</p>
+<p style="font-size: 20px;">You currently have <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
 <form method="post">
     <label for="exercise-type">Exercise type</label>
     <select id="exercise-type" onChange="changedSelection()">
