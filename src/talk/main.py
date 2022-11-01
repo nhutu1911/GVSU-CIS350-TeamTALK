@@ -6,7 +6,6 @@ from flask_login import current_user
 
 from .models import User
 
-
 main = Blueprint('main', __name__)
 
 @main.route("/")
@@ -19,6 +18,11 @@ def user():
         return render_template('user.html', user=current_user)
     return redirect(url_for('auth.login'))
 
+@main.route('/user/<username>')
+def user_profile(username):
+    user = User.query.filter_by(username=username).first()
+    return render_template('user_profile.html', user=user)
+
 @main.route('/challenges/')
 def challenges():
     return render_template('challenges.html')
@@ -27,4 +31,3 @@ def challenges():
 def leaderboard():
     users = User.query.order_by(User.points.desc()).all()
     return render_template('leaderboard.html', users=users)
-

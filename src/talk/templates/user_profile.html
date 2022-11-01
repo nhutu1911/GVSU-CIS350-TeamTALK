@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+{% if user %}
+    <h1>{{ user['username'] }}'s workout history</h1>
+    <p style="font-size: 20px;">{{ user['username'] }} currently has <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
+    {% for exercise in user.exercises %}
+    <p>{{ exercise['exercise_type'] }}: {{ exercise['duration'] }} minutes</p>
+    {% endfor %}
+    {% else %}
+    <h1>That user does not exist.</h1>
+    {% endif %}
+{% endblock %}
+</html>
