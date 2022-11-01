@@ -1,11 +1,11 @@
-from flask import Flask
 from flask import render_template
-from flask import request
-from flask import session
 from flask import redirect
 from flask import url_for
 from flask import Blueprint
 from flask_login import current_user
+
+from .models import User
+
 
 main = Blueprint('main', __name__)
 
@@ -25,5 +25,6 @@ def challenges():
 
 @main.route('/leaderboard/')
 def leaderboard():
-    return render_template('leaderboard.html')
+    users = User.query.order_by(User.points.desc()).all()
+    return render_template('leaderboard.html', users=users)
 
