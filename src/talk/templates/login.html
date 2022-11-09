@@ -2,21 +2,32 @@
 <html lang="en">
 {% extends "base.html" %}
 {% block content %}
-<h1>Please log in.</h1>
-<form method="post">
-    {{ form.csrf_token }}
-    <fieldset class="username">
-        {{ form.username.label }}
-        {{ form.username(placeholder='username') }}
-        {% if form.username.errors %}
-            <ul class="errors">
-                {% for error in form.username.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </fieldset>
-    <fieldset class="password">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
+
+    <body class="text-center">
+    <form method="post" class="form-signin">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <!-- Username login field -->
+      <label for="inputUsername" class="sr-only">Username</label>
+        {{ form.csrf_token }}
+            <fieldset class="username" id="inputUsername" class="form-control">
+                {{ form.username.label }}
+                {{ form.username(placeholder='username') }}
+                {% if form.username.errors %}
+                    <ul class="errors">
+                        {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </fieldset>
+
+    <!-- Password login field -->
+      <label for="inputPassword" class="sr-only">Password</label>
+       <fieldset class="password" id="inputPassword" class="form-control">
         {{ form.password.label }}
         {{ form.password }}
         {% if form.password.errors %}
@@ -25,10 +36,18 @@
                 <li>{{ error }}</li>{% endfor %}
             </ul>
         {% endif %}
+
+    <!-- Remember me checkbox -->
     </fieldset>
-    <div class="submit-button">
-        {{ form.submit }}
-    </div>
-</form>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+
+    <!-- Submit button -->
+      <button class="btn btn-lg btn-primary btn-block" type="submit">{{ form.submit }}</button>
+    </form>
+    </body>
 {% endblock %}
 </html>
