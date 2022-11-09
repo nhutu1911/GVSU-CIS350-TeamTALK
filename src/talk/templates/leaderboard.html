@@ -2,7 +2,29 @@
 <html lang="en">
 {% extends "base.html" %}
 {% block content %}
-    <table>
+    <style>
+        #users {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        #users td, #users th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        #users tr:nth-child(even){background-color: #f2f2f2;}
+        #users tr:hover {background-color: #ddd;}
+        #users th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: darkolivegreen;
+          color: white;
+        }
+</style>
+
+    <h1>Leaderboard</h1>
+    <table id="users">
         <tr>
             <th>Place</th>
             <th>Username</th>

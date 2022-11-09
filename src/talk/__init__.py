@@ -4,6 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
+from flask_bootstrap import Bootstrap
 
 from dotenv import load_dotenv
 
@@ -13,6 +14,7 @@ login_manager = LoginManager()
 
 def create_app():
     app = Flask(__name__)
+    Bootstrap(app)
     load_dotenv()
     if os.getenv('SECRET_KEY') is None:
         raise ValueError('SECRET_KEY is not set in .env')
