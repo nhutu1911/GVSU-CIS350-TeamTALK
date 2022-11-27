@@ -2,7 +2,7 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import Blueprint
-from flask_login import current_user
+from flask_login import current_user, login_required
 from flask import request
 from . import db
 
@@ -15,17 +15,20 @@ def index():
     return render_template('index.html')
 
 @main.route('/user/')
+@login_required
 def user():
     if current_user:
         return render_template('user.html', user=current_user)
     return redirect(url_for('auth.login'))
 
 @main.route('/user/<username>')
+@login_required
 def user_profile(username):
     user = User.query.filter_by(username=username).first()
     return render_template('user_profile.html', user=user)
 
 @main.route('/challenges/', methods=["POST","GET"])
+@login_required
 def challenges():
     if request.method == "POST":
         if request.form['challenge'] == 'Complete Challenge 3':
