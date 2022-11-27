@@ -4,6 +4,7 @@ from flask import url_for
 from flask import Blueprint
 from flask_login import current_user
 from flask import request
+from . import db
 
 from .models import User
 from flask import Flask
@@ -28,17 +29,20 @@ def user_profile(username):
 def challenges():
     if request.method == "POST":
         if request.form['challenge'] == 'Complete Challenge 3':
-            points3= current_user.points() +300
+            points3= current_user.points +300
             User.set_points(current_user,points3)
-            return render_template('leaderboard.html')
+            db.session.commit()
+            return render_template('user.html', user=current_user)
         elif request.form['challenge'] == 'Complete Challenge 2':
-            points2= current_user.points() +200
+            points2= current_user.points +200
             User.set_points(current_user,points2)
-            return render_template('leaderboard.html')
+            db.session.commit()
+            return render_template('user.html', user=current_user)
         elif request.form['challenge'] == 'Complete Challenge 1':
             points=current_user.points+100
             User.set_points(current_user,points)
-            print(current_user.points)
+            db.session.commit()
+            return render_template('user.html', user=current_user)
     return render_template('challenges.html')
 
 @main.route('/leaderboard/')
