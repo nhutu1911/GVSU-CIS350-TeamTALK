@@ -10,8 +10,8 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 ### Leaderboard
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR1 | Comparable fitness data shall be shown on a leaderboard|
-| FR2 | The user shall see their data and other users’ data on the leaderboard|
+| FR1 | Comparable fitness data shall be shown on a leaderboard |
+| FR2 | The user shall see their data and other users’ data on the leaderboard |
 | FR3 | The user shall be able to look at other users records by clicking their name on the leaderboard |
 | FR4 |
 | FR5 |
@@ -20,7 +20,7 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 | :-------------: | :----------: |
 | FR6 | The webpage shall have a login screen upon loading |
 | FR7 | The login form shall have a “forgot password” function to recover accounts with forgotten passwords |
-| FR8 |
+| FR8 | New user shall register an account to login |
 | FR9 |
 | FR10 | 
 ### Workout tracker logger 
@@ -35,7 +35,7 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 ### Webiste accessibility
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR17 | The systm shall adapt to the users screen ratio |
+| FR17 | The system shall adapt to the users screen ratio |
 | FR18 | User who have not created an account or logged in shall only be given a preview of the website |
 | FR19 |
 | FR20 | 
@@ -43,10 +43,10 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 ### Daily challenges
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR 22 | The daily challenge shall let users see and achieve the highest score mutilple times |
+| FR22 | The daily challenge shall let users see and achieve the highest score mutilple times |
 | FR23 | The user shall access video tutorials for their workout (daily challenge) |
 | FR24 | The daily challenge shall change every day | 
-| FR25 |
+| FR25 | The user shall access their previous challenges |
 | FR26 | 
 
 ## Non-Functional Requirements
@@ -63,7 +63,7 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 | :-------------: | :----------: |
 | NFR6 | Login system shall be secure and not put user data at risk |
 | NFR7 | The webpage shall have user authentication upon loading | 
-| NFR8 | THe user shall have their unique name when they created an account |
+| NFR8 | The user shall have their unique name when they created an account |
 | NFR9 |
 | NFR10 |
 ### Website accessibility
