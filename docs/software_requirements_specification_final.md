@@ -1,6 +1,6 @@
 # Overview
 
-The purpose of our system requirement spec is to lay the ground rules for what we expect from our project. This is important because it gives a clear understanding of what our future goals are. This includes what our project will be able to do functionally and non-functionally through the lens of software development. This is an important part of project planning as it collectively gathers the ideas and goals of every member for the project and narrows them down to specific requirements that shall be completed.![image](https://user-images.githubusercontent.com/69228509/204299688-7390b412-d021-45c8-b385-e3842216aa29.png)
+The purpose of our system requirement spec is to lay the ground rules for what we expect from our project. This is important because it gives a clear understanding of what our future goals are. This includes what our project will be able to do functionally and non-functionally through the lens of software development. This is an important part of project planning as it collectively gathers the ideas and goals of every member for the project and narrows them down to specific requirements that shall be completed.
 
 # Software Requirements
 
