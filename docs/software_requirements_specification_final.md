@@ -48,3 +48,6 @@ The purpose of our system requirement spec is to lay the ground rules for what w
 6. Daily challenges
     - The daily challenge videos shall be visible to all users.
     - Daily challenge videos shall be able to be viewed in full screen regardless of screen resolution. 
+
+
+### LINK TO ARTIFACTS [Click here!](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/tree/master/artifacts)
