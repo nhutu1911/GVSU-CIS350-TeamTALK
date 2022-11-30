@@ -3,50 +3,70 @@
 {% extends "base.html" %}
 {% block content %}
 
-     <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
 
- <body class="text-center">
-    <form method="post" class="form-signin">
-      <h1 class="h3 mb-3 font-weight-normal">Account Registration</h1>
 
- <label for="inputUsername" class="sr-only">Username</label>
-        {{ form.csrf_token }}
-        <fieldset class="username" id="inputUsername" class="form-control">
-        {{ form.username.label }}
-        {{ form.username(placeholder='John') }}
-        {% if form.username.errors %}
-            <ul class="errors">
-                {% for error in form.username.errors %}
+<body class="text-center">
+<div class="login-page">
+    <div class="form">
+        <form method="post" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Account Registration</h1>
+
+            <label for="inputUsername" class="sr-only">Username</label>
+            {{ form.csrf_token }}
+            <fieldset class="form-signin" id="inputUsername" class="form-control">
+                {{ form.username(placeholder='username') }}
+                {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
                     <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </fieldset>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </fieldset>
 
-    <!-- Password field -->
-     <label for="inputPassword" class="sr-only">Password</label>
-       <fieldset class="password" id="inputPassword" class="form-control">
-        {{ form.password.label }}
-        {{ form.password }}
-        {% if form.password.errors %}
-            <ul class="errors">
-            {% for error in form.password.errors %}
-                <li>{{ error }}</li>{% endfor %}
-            </ul>
-        {% endif %}
-    </fieldset>
+            <!-- Password field -->
+            <label for="inputPassword" class="sr-only">Password</label>
+            <fieldset class="form-signin" id="inputPassword" class="form-control">
+                {{ form.password }}
+                {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </fieldset>
 
-     <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    <br>Do NOT use a password you use for any other website! There are no safety guarantees.
-</form>
+            <!-- Password confirmation field -->
+            <label for="inputPassword" class="sr-only">Confirm</label>
+            <fieldset class="form-signin" id="passwordConfirm" class="form-control">
+                {{ form.confirm }}
+                {% if form.confirm.errors %}
+                <ul class="errors">
+                    {% for error in form.confirm.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </fieldset>
 
-<div class="login-signup">
-  <div>
-    <span>Already have an account?</span>
-    <a href="{{ url_for('auth.login') }}">Log in</a>
-  </div>
+            <!-- Submit button -->
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-lg btn-primary btn-lg" type="submit">Submit</button>
+            </div>
+            <br>Do NOT use a password you use for any other website! There are no safety guarantees.
+        </form>
+
+        <div class="login-signup">
+            <div>
+                <span>Already have an account?</span>
+                <a href="{{ url_for('auth.login') }}">Log in</a>
+            </div>
+        </div>
+    </div>
 </div>
- </body>
+</body>
 {% endblock %}
 </html>

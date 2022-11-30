@@ -3,51 +3,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
 
-    <body class="text-center">
-    <form method="post" class="form-signin">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<body class="text-center">
+<div class="login-page">
+    <div class="form">
+        <form method="post" class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Welcome Back!</h1>
 
-    <!-- Username login field -->
-      <label for="inputUsername" class="sr-only">Username</label>
-        {{ form.csrf_token }}
-            <fieldset class="username" id="inputUsername" class="form-control">
-                {{ form.username.label }}
+            <!-- Username login field -->
+            <label for="inputUsername" class="sr-only">Username</label>
+            {{ form.csrf_token }}
+            <fieldset class="form-signin" id="inputUsername" class="form-control">
                 {{ form.username(placeholder='username') }}
                 {% if form.username.errors %}
-                    <ul class="errors">
-                        {% for error in form.username.errors %}
-                        <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
             </fieldset>
 
-    <!-- Password login field -->
-      <label for="inputPassword" class="sr-only">Password</label>
-       <fieldset class="password" id="inputPassword" class="form-control">
-        {{ form.password.label }}
-        {{ form.password }}
-        {% if form.password.errors %}
-            <ul class="errors">
-                {% for error in form.password.errors %}
-                <li>{{ error }}</li>{% endfor %}
-            </ul>
-        {% endif %}
+            <!-- Password login field -->
+            <fieldset class="form-signin" id="inputPassword" class="form-control">
+                {{ form.password }}
+                {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
 
-    <!-- Remember me checkbox -->
-    </fieldset>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
+                <!-- Remember me checkbox -->
+            </fieldset>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
 
-    <!-- Submit button -->
-      <button class="btn btn-lg btn-primary btn-block" type="submit">{{ form.submit }}</button>
-    </form>
-    </body>
+            <!-- Submit button -->
+            <button class="btn btn-lg btn-primary btn-lg" type="submit">Submit</button>
+
+            <p class="message">Not registered? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
+        </form>
+    </div>
+</div>
+</body>
 {% endblock %}
 </html>
