@@ -12,3 +12,14 @@ Our group plans on creating a web application that will take user fitness data, 
 ## Prerequisites
 
 ## Run Instructions
+
+[Visit the live website](https://talk.muzak23.com/)
+
+To run locally:
+* Clone the repository 
+* Install requirements with `pip install -r requirements.txt`
+* In the `/GVSU-CIS350-TeamTALK` directory, run `python3 -m venv venv` to create the virtual environment
+* Activate the environment with `venv\Scripts\activate`
+* Set the flask app: `$env:FLASK_APP = "talk"` (Powershell)
+* Start the local server: `flask run`
+* Connect to the local address on the browser of your choice!
