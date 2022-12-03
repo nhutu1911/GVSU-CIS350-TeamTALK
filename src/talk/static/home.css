@@ -93,6 +93,7 @@ nav a:hover {
   transition: .3s;
 }
 
+/* helper to show the mobile menu when hamburger clicked */
 .box-input {
   display: none;
 }
@@ -125,8 +126,7 @@ nav a:hover {
   }
 }
 
-
-
+/* for smaller screen and mobile */
 @media (max-width: 780px) {
   .hamburger {
     display: grid !important;

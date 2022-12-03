@@ -16,7 +16,7 @@
             <label for="inputUsername" class="sr-only">Username</label>
             {{ form.csrf_token }}
             <fieldset class="form-signin" id="inputUsername" class="form-control">
-                {{ form.username(placeholder='username') }}
+                {{ form.username(placeholder='Username') }}
                 {% if form.username.errors %}
                 <ul class="errors">
                     {% for error in form.username.errors %}
@@ -29,7 +29,7 @@
             <!-- Password field -->
             <label for="inputPassword" class="sr-only">Password</label>
             <fieldset class="form-signin" id="inputPassword" class="form-control">
-                {{ form.password }}
+                {{ form.password(placeholder='Password') }}
                 {% if form.password.errors %}
                 <ul class="errors">
                     {% for error in form.password.errors %}
@@ -42,7 +42,7 @@
             <!-- Password confirmation field -->
             <label for="inputPassword" class="sr-only">Confirm</label>
             <fieldset class="form-signin" id="passwordConfirm" class="form-control">
-                {{ form.confirm }}
+                {{ form.confirm(placeholder='Confirm Password')}}
                 {% if form.confirm.errors %}
                 <ul class="errors">
                     {% for error in form.confirm.errors %}
@@ -54,7 +54,7 @@
 
             <!-- Submit button -->
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-lg btn-primary btn-lg" type="submit">Submit</button>
+                <button class="btnsm btn-lg btn-primary btn-lg" type="submit">Submit</button>
             </div>
             <br>Do NOT use a password you use for any other website! There are no safety guarantees.
         </form>

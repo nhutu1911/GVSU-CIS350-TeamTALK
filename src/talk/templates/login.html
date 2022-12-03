@@ -16,7 +16,7 @@
             <label for="inputUsername" class="sr-only">Username</label>
             {{ form.csrf_token }}
             <fieldset class="form-signin" id="inputUsername" class="form-control">
-                {{ form.username(placeholder='username') }}
+                {{ form.username(placeholder='Username') }}
                 {% if form.username.errors %}
                 <ul class="errors">
                     {% for error in form.username.errors %}
@@ -28,7 +28,7 @@
 
             <!-- Password login field -->
             <fieldset class="form-signin" id="inputPassword" class="form-control">
-                {{ form.password }}
+                {{ form.password(placeholder='Password') }}
                 {% if form.password.errors %}
                 <ul class="errors">
                     {% for error in form.password.errors %}
