@@ -4,24 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TALK Fitness</title>
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Custom styles for this template -->
+
     <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
   </head>
+  
   <body>
-    <nav class="site-header sticky-top py-1">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="#">
-        </a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('main.index') }}">Home</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('main.challenges') }}">Challenges</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('main.user') }}">User</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('auth.login') }}">Login</a>
-        <a class="py-2 d-none d-md-inline-block" href="{{ url_for('auth.register') }}">Register</a>
+
+    <input class="box-input" type="checkbox" id="toggle">
+
+    <nav>
+      <h1><a href="{{ url_for('main.index') }}">TALK FITNESS</a></h1>
+      <div class="menu">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="{{ url_for('main.challenges') }}">Challenges</a>
+        <a href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
+        <a href="{{ url_for('main.user') }}">User</a>
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
       </div>
+
+      <label class="hamburger" for="toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </label>
     </nav>
+
+    <div class="mobile-menu">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <a href="{{ url_for('main.challenges') }}">Challenges</a>
+      <a href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
+      <a href="{{ url_for('main.user') }}">User</a>
+      <a href="{{ url_for('auth.login') }}">Login</a>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+    </div>
+
 
     {% block content %}
     {% endblock %}
