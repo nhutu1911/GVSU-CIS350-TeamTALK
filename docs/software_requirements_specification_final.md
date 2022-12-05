@@ -10,11 +10,11 @@ Below are the functional and non-functional requirements for the project.
 ### Leaderboard
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR1 | Comparable fitness data shall be shown on a leaderboard |
-| FR2 | The user shall see their data and other users’ data on the leaderboard |
-| FR3 | The user's data shall update when the user completed a challenge or input their workout |
-| FR4 | The user shall be able to look at other users' records by clicking their name on the leaderboard |
-| FR5 |
+| FR1 | The used shall log in to access daily challenge | 
+| FR2 | Comparable fitness data shall be shown on a leaderboard |
+| FR3 | The user shall see their data and other users’ data on the leaderboard |
+| FR4 | The user's data shall update when the user completed a challenge or input their workout |
+| FR5 | The user shall be able to look at other users' records by clicking their name on the leaderboard |
 ### Login Form
 | ID | Requirement |
 | :-------------: | :----------: |
@@ -34,11 +34,12 @@ Below are the functional and non-functional requirements for the project.
 ### Daily challenges
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR18 | The daily challenge shall change every day |
-| FR19 | The user shall access their previous challenges |
-| FR17 | The user shall access video tutorials for their workout (daily challenge) |
-| FR16 | The daily challenge shall let users see and achieve the highest score multiple times |
-| FR20 | 
+| FR16 | The daily challenge shall change every day |
+| FR17 | The user shall access their previous challenges |
+| FR18 | The user's point shall increase after completing the challenge |
+| FR19 | The user shall access video tutorials for their workout (daily challenge) |
+| FR20 | The daily challenge shall let users see and achieve the highest score multiple times |
+
 
 ## Non-Functional Requirements
 ### Leaderboard
@@ -46,17 +47,17 @@ Below are the functional and non-functional requirements for the project.
 | :-------------: | :----------: |
 | NFR1 | The leaderboard shall be visible to all users |
 | NFR2 | Users shall not be able to edit the leaderboard |
-| NFR3 | The point shall be in descending order from the top |
-| NFR4 | 
-| NFR5 |
+| NFR3 | The leaderboard shall show the rank of each user |
+| NFR4 | The point shall be in descending order from the top |
+| NFR5 | The leaderboard shall include points of all users in the system |
 ### Login Form 
 | ID | Requirement |
 | :-------------: | :----------: |
-| NFR6 | The webpage shall have user authentication upon loading | 
-| NFR7 | Login system shall be secure and not put user data at risk |
-| NFR8 | The user shall have their unique name when they created an account |
-| NFR9 |
-| NFR10 |
+| NFR6 | The system shall respond to users' request quickly |
+| NFR7 | The webpage shall have user authentication upon loading | 
+| NFR8 | Login system shall be secure and not put user data at risk |
+| NFR9 | The user shall save their login information by checking "remember me" |
+| NFR10 | The user shall have their unique username when they created an account |
 ### Website accessibility
 | ID | Requirement |
 | :-------------: | :----------: |
@@ -69,9 +70,9 @@ Below are the functional and non-functional requirements for the project.
 | ID | Requirement |
 | :-------------: | :----------: |
 | NFR16 | The daily challenge videos shall be visible to all users |
-| NFR17 | Daily challenge videos shall be able to be viewed in full screen regardless of screen resolution |
-| NFR18 | 
-| NFR19 |
+| NFR17 | Each challenge shall include points that the user can achieve | 
+| NFR18 | Daily challenge videos shall be able to be viewed in full screen regardless of screen resolution |
+| NFR19 | 
 | NFR20 |
 
 
@@ -85,3 +86,4 @@ This link will lead you to all the artifacts we developed throughout the semeste
 - [Midterm Presentation](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/TALK_Presentation%20.pdf)
 - [Project proposal](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/project-proposal.md)
 - [High-level tasks](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/tasks.md)
+- [Final Presentation](#)
