@@ -14,11 +14,41 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html')
 
-@main.route('/user/')
+@main.route('/user/',methods=["POST","GET"])
 @login_required
 def user():
-    if current_user:
-        return render_template('user.html', user=current_user)
+    if request.method == "POST":
+        if request.form['dropdownmenu'] == 'Running':
+            duration=int(request.form['duration'])
+            distance=int(request.form['distance'])
+            points = distance * 10 + current_user.points
+            User.set_points(current_user,points)
+            db.session.commit()
+        if request.form['dropdownmenu'] == 'Biking':
+            duration=int(request.form['duration'])
+            distance=int(request.form['distance'])
+            points = distance * 50.31 + current_user.points
+            User.set_points(current_user,points)
+            db.session.commit()
+        if request.form['dropdownmenu'] == 'Swimming':
+            duration=int(request.form['duration'])
+            distance=int(request.form['distance'])
+            points =  duration * 7.2 + current_user.points
+            User.set_points(current_user,points)
+            db.session.commit()
+        if request.form['dropdownmenu'] == 'Weights':
+            weight=int(request.form['weight'])
+            reps=int(request.form['reps'])
+            sets=int(request.form['sets'])
+            points =  reps * 1 * sets + current_user.points
+            User.set_points(current_user,points)
+            db.session.commit()
+        if request.form['dropdownmenu'] == 'Yoga':
+            duration=int(request.form['duration'])
+            points =  duration * 3.42 + current_user.points
+            User.set_points(current_user,points)
+            db.session.commit()
+    return render_template('user.html', user=current_user)
     return redirect(url_for('auth.login'))
 
 @main.route('/user/<username>')

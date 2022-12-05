@@ -15,8 +15,8 @@
                 <h3 class="card-title">Hello {{ user['username'] }}</h3>
                 <p style="font-size: 20px;">You currently have <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
                 <label for="exercise-type">Exercise type</label>
-                <select id="exercise-type" onChange="changedSelection()">
-                    <option value="Running">Running</option>
+                <select id="exercise-type" name="dropdownmenu" onChange="changedSelection()">
+                    <option value="Running" name="Running">Running</option>
                     <option value="Biking">Biking</option>
                     <option value="Swimming">Swimming</option>
                     <option value="Weights">Weights</option>
@@ -48,7 +48,7 @@
                 </div>
 
                 <!-- Submit button -->
-            <button class="btn btn-lg btn-primary btn-lg" type="submit">Submit</button>
+            <button class="btn btn-lg btn-primary btn-lg" name = "submit" type="submit">Submit</button>
             </form>
         </div>
     </div>
