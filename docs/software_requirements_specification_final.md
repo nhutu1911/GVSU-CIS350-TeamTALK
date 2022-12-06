@@ -15,7 +15,7 @@ Below are the functional and non-functional requirements for the project.
 | FR3 | The user shall see their data and other users’ data on the leaderboard |
 | FR4 | The user's data shall update when the user completed a challenge or input their workout |
 | FR5 | The user shall be able to look at other users' records by clicking their name on the leaderboard |
-### Login Form
+### Login form
 | ID | Requirement |
 | :-------------: | :----------: |
 | FR6 | New user shall register an account to log in |
@@ -26,8 +26,8 @@ Below are the functional and non-functional requirements for the project.
 ### Workout tracker logger 
 | ID | Requirement |
 | :-------------: | :----------: |
-| FR11 | The user shall add their goals however they would like |
-| FR12 | Fitness data shall be able to be quantified comparably |
+| FR11 | Fitness data shall be able to be quantified comparably |
+| FR12 | The user's point shall increase after inputting their workout |
 | FR13 | The web application shall allow the user to record their workout minutes |
 | FR14 | Users shall be able to manually input fitness data into their account log |
 | FR15 | The system shall have a system to log user workout hours and stats in the database |
@@ -50,7 +50,7 @@ Below are the functional and non-functional requirements for the project.
 | NFR3 | The leaderboard shall show the rank of each user |
 | NFR4 | The point shall be in descending order from the top |
 | NFR5 | The leaderboard shall include points of all users in the system |
-### Login Form 
+### Login form 
 | ID | Requirement |
 | :-------------: | :----------: |
 | NFR6 | The system shall respond to users' request quickly |
@@ -66,14 +66,14 @@ Below are the functional and non-functional requirements for the project.
 | NFR13 | The web application shall be capable enough to handle 20 users |
 | NFR14 | All features shall be accessible on both desktop and mobile devices |
 | NFR15 | Site shall be able to handle multiple users inputting/retrieving data at once |
-### Daily challenges
+### Daily challenges and workout input
 | ID | Requirement |
 | :-------------: | :----------: |
 | NFR16 | The daily challenge videos shall be visible to all users |
 | NFR17 | Each challenge shall include points that the user can achieve | 
-| NFR18 | Daily challenge videos shall be able to be viewed in full screen regardless of screen resolution |
-| NFR19 | 
-| NFR20 |
+| NFR18 | The user shall have 5 different types of exercise to choose from |
+| NFR19 | The user shall enter workout duration and distance without any units |
+| NFR20 | Daily challenge videos shall be able to be viewed in full screen regardless of screen resolution  |
 
 
 # Software Artifacts
@@ -82,8 +82,10 @@ This link will lead you to all the artifacts we developed throughout the semeste
 - [Daily Challenge use case](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/artifacts/use_case_diagrams/DC_uses_case.drawio.pdf)
 - [User Data Entry use case](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/artifacts/use_case_diagrams/User%20Data%20Entry.drawio.pdf)
 - [Extended use case](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/artifacts/use_case_diagrams/Extended_Use_Case_DC-View_Challenge.md)
-- [Gantt Chart](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/GanttChart_TALK.pdf)
+- [Gantt Chart midterm](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/GanttChart_TALK.pdf)
 - [Midterm Presentation](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/TALK_Presentation%20.pdf)
+- [Software requirements specification midterm](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/software_requirements_specification.md)
 - [Project proposal](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/project-proposal.md)
 - [High-level tasks](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/tasks.md)
+- [Gantt Chart final](#)
 - [Final Presentation](#)
