@@ -3,6 +3,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import Blueprint
+from flask import flash
 
 from flask_login import login_required, logout_user, current_user, login_user
 from .forms import LoginForm, RegisterForm
@@ -16,14 +17,14 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    # Validate login attempt
+    # Validate on login attempt
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(password=form.password.data):
             login_user(user)
             return redirect(url_for('main.user'))
-        # flash('Invalid username/password combination')
-        return redirect(url_for('auth.login'))
+        flash("Invalid username or password!", "danger")
+        return redirect(url_for('auth.login', form=form))
     return render_template('login.html', form=form)
 
 @auth.route('/register/', methods=['GET', 'POST'])
@@ -38,6 +39,11 @@ def register():
             db.session.commit()  # Create new user
             login_user(user)  # Log in as newly created user
             return redirect(url_for('main.user'))
+        else:
+            flash("Username already exists!", "danger")
+            return redirect(url_for('auth.register', form=form))
+    for error in form.errors.values():
+        flash(error[0], "danger")
     return render_template('register.html', form=form)
 
 @auth.route('/logout/')

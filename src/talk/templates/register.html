@@ -11,45 +11,36 @@
 <div class="login-page">
     <div class="form">
         <form method="post" class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Account Registration</h1>
+            {{ form.csrf_token }}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}} alert-dismissible" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <h3 class="h3 mb-3 font-weight-normal">Account Registration</h3>
 
             <label for="inputUsername" class="sr-only">Username</label>
-            {{ form.csrf_token }}
             <fieldset class="form-signin" id="inputUsername" class="form-control">
                 {{ form.username(placeholder='Username') }}
-                {% if form.username.errors %}
-                <ul class="errors">
-                    {% for error in form.username.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
             </fieldset>
 
             <!-- Password field -->
             <label for="inputPassword" class="sr-only">Password</label>
             <fieldset class="form-signin" id="inputPassword" class="form-control">
                 {{ form.password(placeholder='Password') }}
-                {% if form.password.errors %}
-                <ul class="errors">
-                    {% for error in form.password.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
             </fieldset>
 
             <!-- Password confirmation field -->
             <label for="inputPassword" class="sr-only">Confirm</label>
             <fieldset class="form-signin" id="passwordConfirm" class="form-control">
                 {{ form.confirm(placeholder='Confirm Password')}}
-                {% if form.confirm.errors %}
-                <ul class="errors">
-                    {% for error in form.confirm.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
             </fieldset>
 
             <!-- Submit button -->

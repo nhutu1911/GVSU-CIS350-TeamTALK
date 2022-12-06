@@ -10,11 +10,24 @@
 <div class="login-page">
     <div class="form">
         <form method="post" class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Welcome Back!</h1>
+            {{ form.csrf_token }}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <h3 class="h3 mb-3 font-weight-normal">Login</h3>
+            <p class="p mb-3 font-weight-normal">Welcome back!</p>
 
             <!-- Username login field -->
             <label for="inputUsername" class="sr-only">Username</label>
-            {{ form.csrf_token }}
             <fieldset class="form-signin" id="inputUsername" class="form-control">
                 {{ form.username(placeholder='Username') }}
                 {% if form.username.errors %}
@@ -27,6 +40,7 @@
             </fieldset>
 
             <!-- Password login field -->
+            <label for="inputPassword" class="sr-only">Password</label>
             <fieldset class="form-signin" id="inputPassword" class="form-control">
                 {{ form.password(placeholder='Password') }}
                 {% if form.password.errors %}
