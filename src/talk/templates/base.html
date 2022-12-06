@@ -20,9 +20,13 @@
         <a href="{{ url_for('main.index') }}">Home</a>
         <a href="{{ url_for('main.challenges') }}">Challenges</a>
         <a href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
+        {% if current_user.is_authenticated %}
         <a href="{{ url_for('main.user') }}">User</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
         <a href="{{ url_for('auth.login') }}">Login</a>
         <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
       </div>
       <!-- Implement hamburger  -->
       <label class="hamburger" for="toggle">
@@ -36,9 +40,13 @@
       <a href="{{ url_for('main.index') }}">Home</a>
       <a href="{{ url_for('main.challenges') }}">Challenges</a>
       <a href="{{ url_for('main.leaderboard') }}">Leaderboard</a>
+      {% if current_user.is_authenticated %}
       <a href="{{ url_for('main.user') }}">User</a>
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+      {% else %}
       <a href="{{ url_for('auth.login') }}">Login</a>
       <a href="{{ url_for('auth.register') }}">Register</a>
+      {% endif %}
     </div>
     {% block content %}
     {% endblock %}
