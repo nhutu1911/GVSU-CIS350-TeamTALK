@@ -27,6 +27,7 @@ def login():
         return redirect(url_for('auth.login', form=form))
     return render_template('login.html', form=form)
 
+
 @auth.route('/register/', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
@@ -45,6 +46,7 @@ def register():
     for error in form.errors.values():
         flash(error[0], "danger")
     return render_template('register.html', form=form)
+
 
 @auth.route('/logout/')
 @login_required
@@ -65,6 +67,7 @@ def unauthorized():
     # flash("You must be logged in to view that page.")
     return redirect(url_for("auth.login"))
 
+
 @auth.route('/admin/')
 @login_required
 def admin():
@@ -72,6 +75,7 @@ def admin():
         users = User.query.all()
         return render_template('admin.html', users=users)
     return redirect(url_for('main.index'))
+
 
 @auth.route('/admin/delete/', methods=['POST'])
 @login_required
@@ -82,6 +86,7 @@ def delete_user():
         db.session.commit()
         return redirect(url_for('auth.admin'))
     return redirect(url_for('main.index'))
+
 
 @auth.route('/admin/setpoints/', methods=['POST'])
 @login_required

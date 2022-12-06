@@ -3,55 +3,85 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
 
-    <script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='user.js') }}"></script>
 
-    <div class="login-page">
+<div class="login-page">
+    <div class="form">
+        <form method="post" class="form-signin">
+            <h3 class="card-title">Hello {{ user['username'] }}</h3>
+            <p style="font-size: 20px;">You currently have <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
+            <label for="exercise-type">Exercise type</label>
+            <select id="exercise-type" name="dropdownmenu" onChange="changedSelection()">
+                <option value="Running" name="Running">Running</option>
+                <option value="Biking">Biking</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Weights">Weights</option>
+                <option value="Yoga">Yoga</option>
+            </select>
+            <div id="duration-div">
+                <label for="duration">Duration</label>
+                <input type="number" step=0.01 min=0 id="duration" name="duration">
+            </div>
+            <div id="distance-div">
+                <label for="distance">Distance</label>
+                <input type="number" step=0.01 min=0 id="distance" name="distance">
+            </div>
+            <div id="reps-div" hidden>
+                <label for="reps">Reps</label>
+                <input type="number" step=1 min=1 id="reps" name="reps">
+            </div>
+            <div id="sets-div" hidden>
+                <label for="sets">Sets</label>
+                <input type="number" step=1 min=1 id="sets" name="sets">
+            </div>
+            <div id="weight-div" hidden>
+                <label for="weight">Weight</label>
+                <input type="number" step=0.01 min=0 id="weight" name="weight">
+            </div>
+            <div id="calories-div" hidden>
+                <label for="calories">Weight</label>
+                <input type="number" step=0.01 min=0 id="calories" name="weight">
+            </div>
 
-        <div class="form">
-            <form method="post" class="form-signin">
-                <h3 class="card-title">Hello {{ user['username'] }}</h3>
-                <p style="font-size: 20px;">You currently have <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
-                <label for="exercise-type">Exercise type</label>
-                <select id="exercise-type" name="dropdownmenu" onChange="changedSelection()">
-                    <option value="Running" name="Running">Running</option>
-                    <option value="Biking">Biking</option>
-                    <option value="Swimming">Swimming</option>
-                    <option value="Weights">Weights</option>
-                    <option value="Yoga">Yoga</option>
-                </select>
-                <div id="duration-div">
-                    <label for="duration">Duration</label>
-                    <input type="text" id="duration" name="duration">
-                </div>
-                <div id="distance-div">
-                    <label for="distance">Distance</label>
-                    <input type="text" id="distance" name="distance">
-                </div>
-                <div id="reps-div" hidden>
-                    <label for="reps">Reps</label>
-                    <input type="text" id="reps" name="reps">
-                </div>
-                <div id="sets-div" hidden>
-                    <label for="sets">Sets</label>
-                    <input type="text" id="sets" name="sets">
-                </div>
-                <div id="weight-div" hidden>
-                    <label for="weight">Weight</label>
-                    <input type="text" id="weight" name="weight">
-                </div>
-                <div id="calories-div" hidden>
-                    <label for="calories">Weight</label>
-                    <input type="calories" id="calories" name="weight">
-                </div>
+            <!-- Submit button -->
+        <button class="btn btn-lg btn-primary btn-lg" name ="submit" type="submit">Submit</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{category}}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-                <!-- Submit button -->
-            <button class="btn btn-lg btn-primary btn-lg" name = "submit" type="submit">Submit</button>
-            </form>
-        </div>
     </div>
-    </body>
+
+    <div class="form">
+        <h3 class="card-title">Import data</h3>
+        <br>
+        <h5>Strava</h5>
+        {% if user['username'] == 'dmin' %}
+        <div class="alert alert-success" role="alert">
+            You are authenticated with Strava! You can import your data by clicking the button below.<br>
+        </div>
+
+        <form method="post" class="form-signin">
+        <button class="btn btn-lg btn-primary btn-lg" name ="import" type="submit">Import</button>
+        </form>
+        {% else %}
+
+        <div class="alert alert-danger" role="alert">
+            You are not authenticated with Strava. Please authenticate with Strava to import your data.<br>
+            <a class="alert-link" href="https://www.strava.com/oauth/authorize?client_id=96464&redirect_uri={{ url_for('main.user', _external=True) }}&response_type=code&scope=activity:read_all" target="_blank" rel="noopener noreferrer">Click here to authenticate with your Strava account</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
 </html>
