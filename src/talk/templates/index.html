@@ -12,18 +12,26 @@
         }
     </style>
 
-    <div class="container">
-        <div class="jumbotron ">
-            <h1 class="display-4 font-weight-normal text-center">TALK Fitness</h1>
-            <p class="lead font-weight-normal text-center"> web application that will take user fitness data, either
-                manually entered or entered through an existing fitness tracker’s API, and log it into a user account.
-                Based
-                on their input, we will create a leaderboard showing their username and their fitness score. Login
-                authentication will hopefully use Google’s OAuth. The user will be able to record their information and
-                see
-                other users’ fitness goals and fitness history.</p>
+    <div class="container-lg pt-3 ">
+        <div class="shadow p-4 mb-4 bg-white">
+            <div style="background:white !important" class="jumbotron">
+                <h1 class="display-4 font-weight-normal text-center">Start your fitness journey.</h1>
+                <p class="lead font-weight-normal">
+                    Welcome to TALK Fitness! This web app was built with the Python framework Flask, and features
+                    a SQLite database for secure user login and registration, as well as user data storage/access.
+                    The frontend was built with Bootstrap 5.0. </p>
+
+                <p class="lead font-weight-normal">
+                    Once an account is created, users can import their fitness logs for various athletic activities
+                    through Strava or by manually entering their stats. Challenges can be completed which earn extra points,
+                    moving you up the leaderboard ranks! </p>
+                <div class="text-center pt-2">
+                    <a class="btn btn-primary btn-lg center" href="https://github.com/nhutu1911/GVSU-CIS350-TeamTALK" role="button">Source Code</a>
+                </div>
+            </div>
         </div>
     </div>
+
 
 {% endblock %}
 </html>
