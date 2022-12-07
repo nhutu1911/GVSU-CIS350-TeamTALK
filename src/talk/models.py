@@ -106,7 +106,7 @@ class User(UserMixin, db.Model):
                     distance=distance,
                     duration=duration,
                     type='Running (Strava imported)',
-                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').timestamp(),
                     points=points
                 )
             elif activity['type'] == 'Ride':
@@ -118,7 +118,7 @@ class User(UserMixin, db.Model):
                     distance=distance,
                     duration=duration,
                     type='Biking (Strava imported)',
-                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').timestamp(),
                     points=points
                 )
             elif activity['type'] == 'Swim':
@@ -130,7 +130,7 @@ class User(UserMixin, db.Model):
                     type='Swimming (Strava imported)',
                     distance=distance,
                     duration=duration,
-                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').timestamp(),
                     points=points
                 )
             else:
@@ -143,7 +143,7 @@ class User(UserMixin, db.Model):
 class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    time = db.Column(db.String(50))
+    time = db.Column(db.Integer)
     type = db.Column(db.String(50))
     duration = db.Column(db.Numeric)
     distance = db.Column(db.Numeric)

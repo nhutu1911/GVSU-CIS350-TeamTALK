@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 
 from flask import render_template
@@ -28,7 +29,7 @@ def user():
                     distance = float(request.form['distance'])
                     points = int(distance * 10)
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points, duration=duration, distance=distance)
                     db.session.add(workout)
                     db.session.commit()
                 elif request.form['dropdownmenu'] == 'Biking':
@@ -36,7 +37,7 @@ def user():
                     distance = float(request.form['distance'])
                     points = int(distance * 50.31)
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points, duration=duration, distance=distance)
                     db.session.add(workout)
                     db.session.commit()
                 elif request.form['dropdownmenu'] == 'Swimming':
@@ -44,7 +45,7 @@ def user():
                     distance = float(request.form['distance'])
                     points = int(duration * 7.2)
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points, duration=duration, distance=distance)
                     db.session.add(workout)
                     db.session.commit()
                 elif request.form['dropdownmenu'] == 'Weights':
@@ -53,20 +54,20 @@ def user():
                     sets = int(request.form['sets'])
                     points = int(reps * 1 * sets * weight)
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, weight=weight, reps=reps, sets=sets)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points, weight=weight, reps=reps, sets=sets)
                     db.session.add(workout)
                     db.session.commit()
                 elif request.form['dropdownmenu'] == 'Yoga':
                     duration = float(request.form['duration'])
                     points = int(duration * 3.42)
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points, duration=duration)
                     db.session.add(workout)
                     db.session.commit()
                 elif request.form['dropdownmenu'] == 'Other':
                     points = int(request.form['calories'])
                     User.add_points(current_user, points)
-                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=int(time.time()), points=points)
                     db.session.add(workout)
                     db.session.commit()
                 flash("Activity added! Good job!", "success")
@@ -93,7 +94,8 @@ def user():
 @login_required
 def user_profile(username):
     temp = User.query.filter_by(username=username).first()
-    return render_template('user_profile.html', user=temp, Workout=Workout)
+    workout_history = temp.workout_history.order_by(Workout.time.desc()).all()
+    return render_template('user_profile.html', user=temp, workout_history=workout_history, Workout=Workout, datetime=datetime)
 
 
 @main.route('/challenges/', methods=["POST", "GET"])
