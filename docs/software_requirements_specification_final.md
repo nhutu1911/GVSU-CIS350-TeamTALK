@@ -87,5 +87,5 @@ This link will lead you to all the artifacts we developed throughout the semeste
 - [Software requirements specification midterm](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/software_requirements_specification.md)
 - [Project proposal](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/project-proposal.md)
 - [High-level tasks](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/tasks.md)
-- [Gantt Chart final](#)
-- [Final Presentation](#)
+- [Gantt Chart final](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/FinalGanttChart_TALK.pdf)
+- [Final Presentation](https://github.com/nhutu1911/GVSU-CIS350-TeamTALK/blob/master/docs/TALK%20Final%20Presentation%20.pdf)
