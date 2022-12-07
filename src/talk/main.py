@@ -20,32 +20,32 @@ def user():
     if request.method == "POST":
         if request.form:
             if request.form['dropdownmenu'] == 'Running':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
+                duration = float(request.form['duration'])
+                distance = float(request.form['distance'])
                 points = distance * 10 + current_user.points
                 User.set_points(current_user, points)
                 db.session.commit()
             elif request.form['dropdownmenu'] == 'Biking':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
+                duration = float(request.form['duration'])
+                distance = float(request.form['distance'])
                 points = distance * 50.31 + current_user.points
                 User.set_points(current_user, points)
                 db.session.commit()
             elif request.form['dropdownmenu'] == 'Swimming':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
+                duration = float(request.form['duration'])
+                distance = float(request.form['distance'])
                 points = duration * 7.2 + current_user.points
                 User.set_points(current_user, points)
                 db.session.commit()
             elif request.form['dropdownmenu'] == 'Weights':
-                weight = int(request.form['weight'])
-                reps = int(request.form['reps'])
-                sets = int(request.form['sets'])
+                weight = float(request.form['weight'])
+                reps = float(request.form['reps'])
+                sets = float(request.form['sets'])
                 points = reps * 1 * sets + current_user.points
                 User.set_points(current_user, points)
                 db.session.commit()
             elif request.form['dropdownmenu'] == 'Yoga':
-                duration = int(request.form['duration'])
+                duration = float(request.form['duration'])
                 points = duration * 3.42 + current_user.points
                 User.set_points(current_user, points)
                 db.session.commit()
