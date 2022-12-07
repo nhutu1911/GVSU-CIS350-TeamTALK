@@ -2,67 +2,90 @@
 <html lang="en">
 {% extends "base.html" %}
 {% block content %}
-<h1>This page is under construction.</h1>
-<p>
-    <span style="animation: pulse 5s infinite;" size =10x>Daily Challenge#1</span>
-  </p>
-  
-  <style>
-  @keyframes pulse {
-    0% {
-      color: red;
-    }
-    100% {
-      color: blue;
-    }
-  }
-  </style>
-<div style="border:3px; border-style:solid; border-color:#000000; padding: 1em;"><b> Challenge: Complete any form of exercise! </b>
-    <p> Points upon completetion: 100</p>
-    <p> <form style="text-align:center" method="post">
-        <input type="submit" value="Complete Challenge 1" name="challenge" >
-    </form></p>
-</div>
-<p>
-    <span style="animation: pulse 5s infinite;" size =10x>Daily Challenge#2</span>
-  </p>
-  
-  <style>
-  @keyframes pulse {
-    0% {
-      color: red;
-    }
-    100% {
-      color: rgb(26, 196, 20);
-    }
-  }
-</style>
-<div style="border:3px; border-style:solid; border-color:#ff0000; padding: 1em;"><b> Challenge: beat any previous exercise related record! </b>
-    <p> Points upon completetion: 200</p>
-    <p> <form style="text-align:center" method="post">
-        <input type="submit" value="Complete Challenge 2" name="challenge">
-    </form></p>
-</div>
-<p>
-    <span style="animation: pulse 5s infinite;" size =10x>Daily Challenge#1</span>
-  </p>
-  
-  <style>
-  @keyframes pulse {
-    0% {
-      color: rgb(25, 15, 208);
-    }
-    100% {
-      color: rgb(220, 20, 170);
-    }
-  }
-  </style>
-<div style="border:3px; border-style:solid; border-color:#3f3690; padding: 1em;"><b> Challenge: Complete a murph! </b>
-    <p> Points upon completetion: 300</p>
-    <a href="https://www.healthline.com/nutrition/murph-workout">Learn about the MURPH!</a>
-    <p> <form style="text-align:center" method="post">
-        <input type="submit" value="Complete Challenge 3" name="challenge" >
-    </form></p>
-</div>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
+
+    <div class="container mb-5">
+        <h1 class="display-2 font-weight-bold text-center">Daily Challenges</h1>
+    </div>
+
+
+    <style>
+        @keyframes pulse {
+            0% {
+                color: red;
+            }
+            100% {
+                color: blue;
+            }
+        }
+    </style>
+    <div class="row">
+        <div class="col-4">
+            <div class="card text-center">
+                <img class="card-img-top"
+                     src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/running-music-1655387886.png"
+                     alt="Card image cap">
+                <div class="shadow p-4 mb-4 bg-white">
+                    <div class="card-header">
+                        <h3 style="animation: pulse 5s infinite;">DAILY CHALLENGE 1</h3>
+                    </div>
+                    <div class="card-body">
+                        <b> Challenge: Complete any form of exercise! </b>
+                        <p> Points upon completetion: 100</p>
+                        <p>
+                        <form style="text-align:center" method="post">
+                            <input type="submit" class="btn btn-lg btn-primary btn-lg" value="Complete Challenge 1"
+                                   name="challenge">
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card text-center">
+                <img class="card-img-top" src="https://www.hrzone.com/sites/default/files/peskymonkey_5.jpg"
+                     alt="Card image cap">
+                <div class="shadow p-4 mb-4 bg-white">
+                    <div class="card-header">
+                        <h3 style="animation: pulse 5s infinite;">DAILY CHALLENGE 2</h3>
+                    </div>
+                    <b> Challenge: beat any previous
+                        exercise related record! </b>
+                    <p> Points upon completetion: 200</p>
+                    <p>
+                    <form style="text-align:center" method="post">
+                        <input type="submit" class="btn btn-lg btn-primary btn-lg" value="Complete Challenge 2"
+                               name="challenge">
+                    </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card text-center">
+                <img class="card-img-top"
+                     src="https://cdn.shopify.com/s/files/1/0164/3075/9990/articles/murph_workout_672x.png?v=1580465694"
+                     alt="Card image cap">
+                <div class="shadow p-4 mb-4 bg-white">
+                    <div class="card-header">
+                        <h3 style="animation: pulse 5s infinite;">DAILY CHALLENGE 3</h3>
+                    </div>
+                    <b> Challenge: Complete a murph! </b>
+                    <p> Points upon completetion: 300</p>
+                    <a href="https://www.healthline.com/nutrition/murph-workout">Learn about the MURPH!</a>
+                    <p>
+                    <form style="text-align:center" method="post">
+                        <input type="submit" class="btn btn-lg btn-primary btn-lg" value="Complete Challenge 3"
+                               name="challenge">
+                    </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 </html>
