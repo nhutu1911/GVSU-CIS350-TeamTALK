@@ -101,6 +101,7 @@ class User(UserMixin, db.Model):
                 distance = float(activity['distance']) / 1609.34
                 duration = float(activity['elapsed_time']) / 60
                 points = int(distance * 10)
+                self.add_points(points)
                 workout = Workout(
                     user_id=self.id,
                     distance=distance,
@@ -113,6 +114,7 @@ class User(UserMixin, db.Model):
                 distance = float(activity['distance']) / 1609.34
                 duration = float(activity['elapsed_time']) / 60
                 points = int(distance * 50.31)
+                self.add_points(points)
                 workout = Workout(
                     user_id=self.id,
                     distance=distance,
@@ -125,6 +127,7 @@ class User(UserMixin, db.Model):
                 distance = float(activity['distance']) / 1609.34
                 duration = float(activity['elapsed_time']) / 60
                 points = int(duration * 7.2)
+                self.add_points(points)
                 workout = Workout(
                     user_id=self.id,
                     type='Swimming (Strava imported)',
@@ -135,7 +138,6 @@ class User(UserMixin, db.Model):
                 )
             else:
                 continue
-            self.add_points(points)
             db.session.add(workout)
             db.session.commit()
         return True
