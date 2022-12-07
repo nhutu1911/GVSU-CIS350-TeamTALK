@@ -135,6 +135,7 @@ class User(UserMixin, db.Model):
                 )
             else:
                 continue
+            self.add_points(points)
             db.session.add(workout)
             db.session.commit()
         return True
