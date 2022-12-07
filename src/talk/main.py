@@ -73,7 +73,10 @@ def user():
         except Exception:
             flash("Form data error, try again", "danger")
         if request.form.get("form") == "strava":
-            flash(User.get_strava_token(current_user), "info")
+            if User.strava_import(current_user):
+                flash('Successfully imported your Strava history!', "success")
+            else:
+                flash('Strava import failed, try again', "danger")
     # Strava Authentication
     if request.args:
         args = request.args

@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 
 from . import db
@@ -17,6 +18,7 @@ class User(UserMixin, db.Model):
     strava_refresh_token = db.Column(db.String(50))
     strava_expires_at = db.Column(db.Integer)
     strava_athlete = db.Column(db.String(2000))
+    strava_last_queried = db.Column(db.Integer)
     workout_history = db.relationship('Workout', backref='user', lazy='dynamic')
 
     def set_password(self, password):
@@ -76,6 +78,67 @@ class User(UserMixin, db.Model):
             db.session.commit()
             return self.strava_token
 
+    def strava_import(self):
+        if self.strava_code is None:
+            return False
+        token = self.get_strava_token()
+        if self.strava_last_queried is None:
+            self.strava_last_queried = 0
+        response = requests.get(
+            'https://www.strava.com/api/v3/athlete/activities',
+            headers={
+                    'Authorization': f'Bearer {token}'
+            },
+            params={
+                'per_page': 200,
+                'after': self.strava_last_queried
+            }
+        )
+        self.strava_last_queried = int(time.time())
+        response_json = json.loads(response.text)
+        for activity in response_json:
+            if activity['type'] == 'Run' or activity['type'] == 'Walk':
+                distance = float(activity['distance']) / 1609.34
+                duration = float(activity['elapsed_time']) / 60
+                points = int(distance * 10)
+                workout = Workout(
+                    user_id=self.id,
+                    distance=distance,
+                    duration=duration,
+                    type='Running (Strava imported)',
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    points=points
+                )
+            elif activity['type'] == 'Ride':
+                distance = float(activity['distance']) / 1609.34
+                duration = float(activity['elapsed_time']) / 60
+                points = int(distance * 50.31)
+                workout = Workout(
+                    user_id=self.id,
+                    distance=distance,
+                    duration=duration,
+                    type='Biking (Strava imported)',
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    points=points
+                )
+            elif activity['type'] == 'Swim':
+                distance = float(activity['distance']) / 1609.34
+                duration = float(activity['elapsed_time']) / 60
+                points = int(duration * 7.2)
+                workout = Workout(
+                    user_id=self.id,
+                    type='Swimming (Strava imported)',
+                    distance=distance,
+                    duration=duration,
+                    time=datetime.strptime(activity['start_date'], '%Y-%m-%dT%H:%M:%SZ').strftime("%A, %B %d, %Y at %I:%M%p"),
+                    points=points
+                )
+            else:
+                continue
+            db.session.add(workout)
+            db.session.commit()
+        return True
+
 
 class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -105,5 +168,11 @@ class Workout(db.Model):
             return f'Practiced yoga for {self.duration:0.2f} minutes'
         elif self.type == "Other":
             return f'Manually entered burning {self.points} calories'
+        elif self.type == "Running (Strava imported)":
+            return f'Ran {self.distance:0.2f} miles in {self.duration:0.2f} minutes'
+        elif self.type == "Biking (Strava imported)":
+            return f'Biked {self.distance:0.2f} miles in {self.duration:0.2f} minutes'
+        elif self.type == "Swimming (Strava imported)":
+            return f'Swam {self.distance:0.2f} miles in {self.duration:0.2f} minutes'
         else:
             return 'Error'
