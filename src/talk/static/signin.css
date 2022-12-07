@@ -22,6 +22,12 @@ body {
   margin: auto;
 }
 
+
+.col-4 .card .submitButto {
+  display: block;
+  width: 100%;
+}
+
 .form {
   position: relative;
   z-index: 1;
