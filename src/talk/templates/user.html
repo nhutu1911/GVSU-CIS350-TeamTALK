@@ -10,8 +10,10 @@
 
 <div class="login-page">
     <div class="form">
+        <h3 class="card-title">Hello {{ user['username'] }}</h3>
+        <p style="font-size:15px"><a href="{{ url_for('main.user_profile', username=user['username']) }}">To view your public profile with your exercise history, click here.</a></p>
         <form method="post" class="form-signin">
-            <h3 class="card-title">Hello {{ user['username'] }}</h3>
+            <input type="hidden" name="form" value="workout">
             <p style="font-size: 20px;">You currently have <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
             <label for="exercise-type">Exercise type</label>
             <select id="exercise-type" name="dropdownmenu" onChange="changedSelection()">
@@ -20,14 +22,17 @@
                 <option value="Swimming">Swimming</option>
                 <option value="Weights">Weights</option>
                 <option value="Yoga">Yoga</option>
+                <option value="Other">Other</option>
             </select>
             <div id="duration-div">
                 <label for="duration">Duration</label>
                 <input type="number" step=0.01 min=0 id="duration" name="duration">
+                <label>min</label>
             </div>
             <div id="distance-div">
                 <label for="distance">Distance</label>
                 <input type="number" step=0.01 min=0 id="distance" name="distance">
+                <label>mi</label>
             </div>
             <div id="reps-div" hidden>
                 <label for="reps">Reps</label>
@@ -40,10 +45,13 @@
             <div id="weight-div" hidden>
                 <label for="weight">Weight</label>
                 <input type="number" step=0.01 min=0 id="weight" name="weight">
+                <label>lbs</label>
             </div>
             <div id="calories-div" hidden>
-                <label for="calories">Weight</label>
-                <input type="number" step=0.01 min=0 id="calories" name="weight">
+                <label for="calories">Calories</label>
+                <input type="number" step=0.01 min=0 id="calories" name="calories">
+                <label>kcal</label>
+
             </div>
 
             <!-- Submit button -->
@@ -66,13 +74,14 @@
         <h3 class="card-title">Import data</h3>
         <br>
         <h5>Strava</h5>
-        {% if user['username'] == 'dmin' %}
+        {% if user['strava_code'] %}
         <div class="alert alert-success" role="alert">
             You are authenticated with Strava! You can import your data by clicking the button below.<br>
         </div>
 
         <form method="post" class="form-signin">
-        <button class="btn btn-lg btn-primary btn-lg" name ="import" type="submit">Import</button>
+            <input type="hidden" name="form" value="strava">
+            <button class="btn btn-lg btn-primary btn-lg" name="import" type="submit">Import</button>
         </form>
         {% else %}
 

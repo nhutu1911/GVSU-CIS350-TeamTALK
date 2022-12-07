@@ -18,19 +18,23 @@ function changedSelection() {
         hideElement("reps");
         hideElement("weight");
         hideElement("sets");
+        hideElement("calories");
     } else if (value === "Weights") {
         showElement("reps");
         showElement("weight");
         showElement("sets");
         hideElement("distance");
         hideElement("duration");
+        hideElement("calories");
     } else if (value === "Yoga") {
         showElement("duration");
         hideElement("reps");
         hideElement("weight");
         hideElement("sets");
         hideElement("distance");
+        hideElement("calories");
     } else if (value === "Other") {
+        showElement("calories");
         hideElement("reps");
         hideElement("weight");
         hideElement("sets");

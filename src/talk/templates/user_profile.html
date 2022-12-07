@@ -5,11 +5,13 @@
 {% if user %}
     <h1>{{ user['username'] }}'s workout history</h1>
     <p style="font-size: 20px;">{{ user['username'] }} currently has <b>{{ user.points }}</b> point{% if user.points != 1 %}s{% endif %}.</p>
-    {% for exercise in user.exercises %}
-    <p>{{ exercise['exercise_type'] }}: {{ exercise['duration'] }} minutes</p>
+    {% for workout in user.workout_history %}
+    <h6>{{ workout.time }}</h6>
+    <h5>{{ workout.type }}</h5>
+    <p>{{ Workout.get_summary(workout) }}</p>
     {% endfor %}
-    {% else %}
+{% else %}
     <h1>That user does not exist.</h1>
-    {% endif %}
+{% endif %}
 {% endblock %}
 </html>

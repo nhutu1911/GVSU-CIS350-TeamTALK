@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import render_template
 from flask import flash
 from flask import Blueprint
@@ -5,7 +7,8 @@ from flask_login import current_user, login_required
 from flask import request
 from . import db
 
-from .models import User
+from .models import User, Workout
+
 main = Blueprint('main', __name__)
 
 
@@ -17,39 +20,69 @@ def index():
 @main.route('/user/', methods=["POST", "GET"])
 @login_required
 def user():
-    if request.method == "POST":
-        if request.form:
-            if request.form['dropdownmenu'] == 'Running':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
-                points = distance * 10 + current_user.points
-                User.set_points(current_user, points)
-                db.session.commit()
-            elif request.form['dropdownmenu'] == 'Biking':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
-                points = distance * 50.31 + current_user.points
-                User.set_points(current_user, points)
-                db.session.commit()
-            elif request.form['dropdownmenu'] == 'Swimming':
-                duration = int(request.form['duration'])
-                distance = int(request.form['distance'])
-                points = duration * 7.2 + current_user.points
-                User.set_points(current_user, points)
-                db.session.commit()
-            elif request.form['dropdownmenu'] == 'Weights':
-                weight = int(request.form['weight'])
-                reps = int(request.form['reps'])
-                sets = int(request.form['sets'])
-                points = reps * 1 * sets + current_user.points
-                User.set_points(current_user, points)
-                db.session.commit()
-            elif request.form['dropdownmenu'] == 'Yoga':
-                duration = int(request.form['duration'])
-                points = duration * 3.42 + current_user.points
-                User.set_points(current_user, points)
-                db.session.commit()
-            flash("Activity added! Good job!", "success")
+    if request.method == "POST":  # Submitting a manual workout
+        try:
+            if request.form.get("form") == "workout":
+                if request.form['dropdownmenu'] == 'Running':
+                    duration = float(request.form['duration'])
+                    distance = float(request.form['distance'])
+                    points = int(distance * 10)
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    db.session.add(workout)
+                    db.session.commit()
+                elif request.form['dropdownmenu'] == 'Biking':
+                    duration = float(request.form['duration'])
+                    distance = float(request.form['distance'])
+                    points = int(distance * 50.31)
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    db.session.add(workout)
+                    db.session.commit()
+                elif request.form['dropdownmenu'] == 'Swimming':
+                    duration = float(request.form['duration'])
+                    distance = float(request.form['distance'])
+                    points = int(duration * 7.2)
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration, distance=distance)
+                    db.session.add(workout)
+                    db.session.commit()
+                elif request.form['dropdownmenu'] == 'Weights':
+                    weight = float(request.form['weight'])
+                    reps = int(request.form['reps'])
+                    sets = int(request.form['sets'])
+                    points = int(reps * 1 * sets * weight)
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, weight=weight, reps=reps, sets=sets)
+                    db.session.add(workout)
+                    db.session.commit()
+                elif request.form['dropdownmenu'] == 'Yoga':
+                    duration = float(request.form['duration'])
+                    points = int(duration * 3.42)
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points, duration=duration)
+                    db.session.add(workout)
+                    db.session.commit()
+                elif request.form['dropdownmenu'] == 'Other':
+                    points = int(request.form['calories'])
+                    User.add_points(current_user, points)
+                    workout = Workout(type=request.form['dropdownmenu'], user_id=current_user.id, time=datetime.now().strftime("%A, %B %d, %Y at %I:%M%p"), points=points)
+                    db.session.add(workout)
+                    db.session.commit()
+                flash("Activity added! Good job!", "success")
+        except Exception:
+            flash("Form data error, try again", "danger")
+        if request.form.get("form") == "strava":
+            flash(User.get_strava_token(current_user), "info")
+    # Strava Authentication
+    if request.args:
+        args = request.args
+        if args.get('code') and args.get('scope') == 'read,activity:read_all':
+            User.set_strava_code(current_user, args.get('code'))
+            db.session.commit()
+            flash("Strava account linked!", "success")
+        elif args.get('error'):
+            flash("Authentication failed. Did you click Authorize with the correct permissions?", "danger")
     return render_template('user.html', user=current_user)
 
 
@@ -57,7 +90,7 @@ def user():
 @login_required
 def user_profile(username):
     temp = User.query.filter_by(username=username).first()
-    return render_template('user_profile.html', user=temp)
+    return render_template('user_profile.html', user=temp, Workout=Workout)
 
 
 @main.route('/challenges/', methods=["POST", "GET"])

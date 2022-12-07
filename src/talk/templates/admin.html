@@ -7,6 +7,7 @@
             <th>ID</th>
             <th>Username</th>
             <th>Password Hash</th>
+            <th>Workouts</th>
             <th>Points</th>
 
         </tr>
@@ -15,6 +16,10 @@
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.password }}</td>
+            <td>{% for workout in user.workout_history %}
+                    {{ Workout.get_summary(workout) }}
+                {% endfor %}
+            </td>
             <td>
                 <form action="{{ url_for('auth.set_points') }}" method="post">
                     <input type="hidden" name="id" value="{{ user.id }}">
